@@ -38,11 +38,9 @@ console.log(text)
 
 0106 - write a program to print individual characters of a string in reverse order.
 
-function reverseString(str) {
-    const str1= [...str].reverse().join('');
-    console.log(str1);
-    }
-    reverseString('Rudra');
+// let element = "Rudra";
+// let reversedString =
+// console.log(element.split('').reverse().join(""))
 
 0107 - write a program to count the total number of words in a string.
 let word="This is Rudra IT Hub.com";
