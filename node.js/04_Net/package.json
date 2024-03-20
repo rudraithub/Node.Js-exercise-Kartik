@@ -1,0 +1,15 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "net.js",
+  "scripts": {
+    "start": "nodemon net1.js"
+    
+  },
+  "author": "\"kartik\"",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
