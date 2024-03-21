@@ -1,0 +1,16 @@
+data association
+ek model se doosre model ka data ko jod dena id ke through, matlab ki agar app ke
+pass ek user hai to wo post bnaayega hi, jab post banaga to wo user ke dwaara hi
+banega,to hum hote hai to hum dono ko jod dete hai,ki ek model ke bane huye data
+ki id ko doosre model ke data ko dedete hai aur is model ke data ki id pichhle 
+model ke data ko   dedete hai.
+
+make a mongoose model for me which contains user details, as such username,password,
+posts which is an array,dp,email and full name.
+
+make another model for me,this time for posts,every post contains,posttext,current date
+ and time,likes
+
+ C:\Program Files\MongoDB\Server\7.0\data\
+ C:\Program Files\MongoDB\Server\7.0\log\ 
+            <img src=" " class="card-img-top" alt="">
