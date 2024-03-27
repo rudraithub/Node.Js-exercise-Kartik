@@ -6,7 +6,7 @@ const postModel = require('./post');
 const passport = require('passport');
 const localStrategy=require("passport-local")
 const upload=require("./multer")
-/* GET home page. */
+
 
 passport.use(new localStrategy(userModel.authenticate()));
 
@@ -44,9 +44,6 @@ router.get('/feed',isLoggedIn, async function(req, res, next) {
 });
 
 
-
-
-
 router.get('/add',isLoggedIn,async function(req, res, next) {
   const user = await userModel.findOne({ username: req.session.passport.user });
   res.render('add',{user,nav:true});
@@ -65,7 +62,7 @@ router.post('/createpost', isLoggedIn, upload.single("postimage"), async functio
       description: req.body.description,
       image: req.file.filename
     });
-    user.posts.push(post._id); // Fix the typo here
+    user.posts.push(post._id); 
     await user.save();
     res.redirect("/profile");
   } catch (err) {
@@ -75,24 +72,18 @@ router.post('/createpost', isLoggedIn, upload.single("postimage"), async functio
 });
 
 
-
 router.post('/fileupload', isLoggedIn, upload.single('image'), async (req, res) => {
   try {
-    // Find the user based on the authenticated session
+
     const user = await userModel.findOne({ username: req.session.passport.user });
 
-    // Check if the user exists
+
     if (!user) {
       return res.status(404).send('User not found.');
     }
 
-    // Update the user's profile image with the filename of the uploaded image
     user.profileImage = req.file.filename;
-
-    // Save the updated user object
     await user.save();
-
-    // Redirect to the user's profile page
     res.redirect('/profile');
   } catch (error) {
     console.error('Error uploading file:', error);
@@ -115,7 +106,6 @@ router.post('/register', function(req, res, next) {
       })
     })
     .catch(function(err) {
-      // Handle registration error
       console.error(err);
       res.status(500).send("Error registering user.");
     });

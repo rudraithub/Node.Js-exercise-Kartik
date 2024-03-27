@@ -9,22 +9,14 @@ const upload=require("./multer")
 const localStrategy=require("passport-local");
 passport.use(new localStrategy(userModel.authenticate()));
 
-/* GET home page. */
+
 router.get("/", function (req, res, next) {
   res.render("index");
 });
 
 router.get("/login", function (req, res, next) {
-  // console.log(req.flash("error"));
   res.render("login",{error:req.flash('error')});
 });
-
-
-
-router.get("/feed", function (req, res, next) {
-  res.render("feed");
-});
-
 
 router.post('/upload', upload.single("file"), isLoggedIn, async function (req, res) {
   // Access upload file details via req.file
