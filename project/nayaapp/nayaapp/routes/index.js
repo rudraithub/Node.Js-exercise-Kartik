@@ -19,28 +19,26 @@ router.get("/login", function (req, res, next) {
 });
 
 router.post('/upload', upload.single("file"), isLoggedIn, async function (req, res) {
-  // Access upload file details via req.file
+ 
   if (!req.file) {
     return res.status(400).send("No file was uploaded.");
   }
   try {
-    // Find user based on the username in the session
+
     const user = await userModel.findOne({ username: req.session.passport.user });
-    // Check if user exists
     if (!user) {
       return res.status(404).send("User not found.");
     }
-    // Create post associated with the user
     const post = await postModel.create({
       image: req.file.filename,
       imageText: req.body.filecaption,
       user: user._id
     });
-    // Push the created post's ID to the user's posts array
+
     user.posts.push(post._id);
-    // Save the user object
+
     await user.save();
-    // Send success response
+
     res.redirect('/profile');
   } catch (err) {
     console.error(err);
